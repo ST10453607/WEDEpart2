@@ -26,7 +26,7 @@ Paws & Home Animal Shelter is a Non-Profit Organisation founded in 2015, dedicat
 -Part 1: Website Project Proposal | Completed
 -Part 1 feedback recieved (60%) | Completed 
 - Part 1 implementation catch-up (HTML structure, file structure, Github repo)| Completed |
-- Part 2: CSS Styling and Responsive Design | In Progress |
+- Part 2: CSS Styling and Responsive Design | Completed |
 - Part 3: JavaScript functionality and SEO | TBC | Not started |
 
 ## Part 1 Details
@@ -48,7 +48,7 @@ Part 1 covered organisational research and planning for two candidate organisati
 - Added consistent navigation menu across all 5 pages.
 
 ### [Part 2] - In progress
-
+-
 
 ## References
 Garrett, J.J., 2010. *The elements of user experience: user-centered design in web development. Pearson Education.
