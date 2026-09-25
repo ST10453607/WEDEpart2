@@ -106,3 +106,88 @@ footer {
     padding: 1.5rem;
     margin-top: 2rem;
 }
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    background-color: #E8863A;
+    color: #FFFFFF;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    margin-right: 0.75rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.btn:hover {
+    background-color: #c96f2a;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 2px solid #E8863A;
+    color: #E8863A;
+}
+
+.btn-secondary:hover {
+    background-color: #E8863A;
+    color: #FFFFFF;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Cards (animals, stories) */
+.animal-card, .story-card {
+    background-color: #FFFFFF;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.8);
+}
+
+.animal-card {
+    flex: 1 1 250px;
+}
+
+.animal-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+}
+
+label {
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    box-color: #2C6E68;
+    box-shadow: 0 0 0 2px rgba(44,110,104,0.2);
+}
+
+button[type="submit"] {
+    margin-top: 1.5rem;
+    background-color: #2C6E68;
+    color: #FFFFFF;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #21524d;
+}
