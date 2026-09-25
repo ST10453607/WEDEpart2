@@ -39,6 +39,16 @@ Part 1 covered organisational research and planning for two candidate organisati
 -'enquiry.html'- Volunteer / Donate
 -'contact.html'- Contact
 
+## Responsive Testing Evidence
+**Desktop view:**
+![screenshot-desktop.png]
+
+**Tablet view:**
+![screenshot-tablet.png]
+
+**Mobile view:**
+![screenshot-mobile.png]
+
 ## Changelog
 
 ###[Part 1 Feedback Fix] - 2026-09-24
@@ -47,8 +57,13 @@ Part 1 covered organisational research and planning for two candidate organisati
 - Set up Github repository and pushed full file structure and HTML content.
 - Added consistent navigation menu across all 5 pages.
 
-### [Part 2] - In progress
--
+### [Part 2] - Completed
+- Added CSS reset and base styles
+- Applied typography scale using rem units for headings and body text
+- Implemented Flexbox layout for navigation and main content structure
+- Added visual styles, hover/focus states and card/form component styling
+- Added responsive breakpoints for tablet and mobile using media queries
+- Added responsive testing screenshots 
 
 ## References
 Garrett, J.J., 2010. *The elements of user experience: user-centered design in web development. Pearson Education.
