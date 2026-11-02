@@ -276,4 +276,9 @@ button[type="submit"]:hover {
     .lightbox p { color: #fff; margin-top: 1rem; }
     #lightbox-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2.5rem; background: none; border: none; color: #fff; cursor: pointer; }
     @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+    .accordion-header { width: 100%; text-align: left; padding: 1rem; background: #fff; border: 1px solid #ddd; font-family: inherit; font-size: 1rem; font-weight: 600; cursor: pointer; }
+    .accordion-header:hover { background: #f3ece4; }
+    .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 1rem; background: #fff; }
+    .accordion-body.open { max-height: 200px; padding: 1rem; border: 1px solid #ddd; border-top: none; }
 }

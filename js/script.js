@@ -67,4 +67,14 @@ if (gallery) {
     document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
     lightbox.addEventListener("click", e => { if (e.target === lightbox) closeLightbox(); });
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeLightbox(); });
+
+    /* ===== Accordion ===== */
+    document.querySelectorAll(".accordion-header").forEach(header => {
+        header.addEventListener("click", () => {
+            const body = header.nextElementSibling;
+            const isOpen = header.getAttribute("aria-expanded") === "true";
+            header.setAttribute("aria-expanded", String(!isOpen));
+            body.classList.toggle("open", !isOpen);
+        });
+    });
 }
