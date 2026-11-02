@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://st10453607.github.io/WEDEpart2/sitemap.xml

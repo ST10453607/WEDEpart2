@@ -65,6 +65,15 @@ Part 1 covered organisational research and planning for two candidate organisati
 - Added responsive breakpoints for tablet and mobile using media queries
 - Added responsive testing screenshots 
 
+## Speed and Security Measures
+
+- `defer` on all scripts in HTML to improve loading speed
+- `loading="lazy"` on all images
+- Compressed images for faster loading
+- HTTPS via GitHub Pages
+- User input shown with `textContent` (not innerHTML) to prevent XSS
+- `rel="noopener noreferrer"` on all `target="_blank"` links
+
 ## References
 Garrett, J.J., 2010. *The elements of user experience: user-centered design in web development. Pearson Education.
 
