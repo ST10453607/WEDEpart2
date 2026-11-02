@@ -252,4 +252,28 @@ button[type="submit"]:hover {
         font-family: inherit;
         font-size: 1rem;
     }
+    .hero img {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Filters, search and animal cards */
+    .filters { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+    .filter-btn { padding: 0.5rem 1rem; border: 2px solid #2C6E68; background: #fff; color: #2C6E68; border-radius: 6px; cursor: pointer; font-weight: 600; transition: background 0.2s, color 0.2s; }
+    .filter-btn:hover, .filter-btn.active { background: #2C6E68; color: #fff; }
+    .visually-hidden { position: absolute; left: -9999px; }
+    .animal-card { transition: transform 0.2s, box-shadow 0.2s; }
+    .animal-card:hover { transform: translateY(-4px); }
+    .animal-card img { width: 100%; height: 200px; object-fit: cover; border-radius: 6px; margin-bottom: 1rem; cursor: zoom-in; }
+
+    /* Lightbox */
+    .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 1000; padding: 1rem; }
+    .lightbox[hidden] { display: none; }
+    .lightbox img { max-width: 90%; max-height: 80vh; border-radius: 8px; animation: zoomIn 0.25s ease; }
+    .lightbox p { color: #fff; margin-top: 1rem; }
+    #lightbox-close { position: absolute; top: 1rem; right: 1.5rem; font-size: 2.5rem; background: none; border: none; color: #fff; cursor: pointer; }
+    @keyframes zoomIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
 }

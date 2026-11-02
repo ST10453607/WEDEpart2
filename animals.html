@@ -31,24 +31,25 @@
     </section>
 
     <section class="filters">
-        <button class="filter-btn" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="cat">Cat</button>
-        <button class="filter-btn" data-filter="dog">Dog</button>
+        <label for="search" class="visually-hidden">Search animals</label>
+        <input type="search" id="search" placeholder="Search by name or trait...">
+        <select id="sort" aria-label="Sort animals">
+            <option value="name">Sort: Name (A-Z)</option>
+            <option value="age">Sort: Age (youngest first)</option>
+        </select>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="dog">Dogs</button>
+        <button class="filter-btn" data-filter="cat">Cats</button>
     </section>
 
-    <section class="animal-gallery">
-        <div class="animal-card" data-type="dog">
-            <h3>Rocky</h3>
-            <p>2 years old &middot; Male &middot; Playful and loyal</p>
-        </div>
-        <div class="animal-card" data-type="cat">
-            <h3>Luna</h3>
-            <p>1 year old &middot; Female &middot; Calm and affectionate</p>
-        </div>
-        <div class="animal-card" data-type="cat">
-            <h3>Milo</h3>
-            <p>3 years old &middot; Male &middot; Independent and curious</p>
-        </div>
+    <p id="results-count" aria-live="polite"></p>
+    <section class="animal-gallery" id="animal-gallery"></section>
+
+    <div id="lightbox" class="lightbox" hidden>
+        <button id="lightbox-close" aria-label="Close image">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+        <p id="lightbox-caption"></p>
+    </div>
     </section>
 </main>
 
