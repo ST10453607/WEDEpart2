@@ -77,4 +77,23 @@ if (gallery) {
             body.classList.toggle("open", !isOpen);
         });
     });
+
+    /* ===== Interactive map (Leaflet) ===== */
+    const mapEl = document.getElementById("map");
+    if (mapEl && typeof L !== "undefined") {
+        const map = L.map("map").setView([-33.91, 18.52], 10);
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution: "&copy; OpenStreetMap contributors"
+        }).addTo(map);
+
+        const locations = [
+            { name: "Main Shelter", address: "12 Rescue Road, Cape Town", coords: [-33.9249, 18.4241] },
+            { name: "Adoption Centre", address: "45 Companion Street, Bellville", coords: [-33.9000, 18.6290] }
+        ];
+        locations.forEach(loc => {
+            L.marker(loc.coords).addTo(map).bindPopup("<strong>" + loc.name + "</strong><br>" + loc.address);
+        });
+        map.fitBounds(locations.map(l => l.coords), { padding: [40, 40] });
+    }
 }

@@ -281,4 +281,5 @@ button[type="submit"]:hover {
     .accordion-header:hover { background: #f3ece4; }
     .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; padding: 0 1rem; background: #fff; }
     .accordion-body.open { max-height: 200px; padding: 1rem; border: 1px solid #ddd; border-top: none; }
+    #map { height: 400px; border-radius: 8px; }
 }
