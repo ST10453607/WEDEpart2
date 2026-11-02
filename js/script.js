@@ -96,4 +96,100 @@ if (gallery) {
         });
         map.fitBounds(locations.map(l => l.coords), { padding: [40, 40] });
     }
+    /* ===== Form validation helpers ===== */
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    const phonePattern = /^(\+27|0)[1-9]\d{8}$/;
+
+    function setError(input, message) {
+        const err = document.getElementById(input.id + "-error");
+        if (err) err.textContent = message;
+        input.classList.toggle("invalid", message !== "");
+        return message === "";
+    }
+    function validateText(input, label, min) {
+        const v = input.value.trim();
+        if (v === "") return setError(input, label + " is required.");
+        if (v.length < min) return setError(input, label + " must be at least " + min + " characters.");
+        return setError(input, "");
+    }
+    function validateEmail(input) {
+        const v = input.value.trim();
+        if (v === "") return setError(input, "Email is required.");
+        if (!emailPattern.test(v)) return setError(input, "Enter a valid email, e.g. name@example.com.");
+        return setError(input, "");
+    }
+    function validatePhone(input) {
+        const v = input.value.replace(/\s+/g, "");
+        if (v === "") return setError(input, "Phone number is required.");
+        if (!phonePattern.test(v)) return setError(input, "Enter a valid SA number, e.g. 0821234567 or +27821234567.");
+        return setError(input, "");
+    }
+    function validateSelect(input, label) {
+        if (input.value === "") return setError(input, "Please select " + label + ".");
+        return setError(input, "");
+    }
+    function validateDate(input) {
+        if (input.value === "") return setError(input, "Please choose a start date.");
+        if (input.value < input.min) return setError(input, "Date cannot be in the past.");
+        return setError(input, "");
+    }
+    function showResponse(box, title, text) {
+        box.innerHTML = "";
+        const h = document.createElement("h3");
+        h.textContent = title;
+        const p = document.createElement("p");
+        p.textContent = text;
+        box.append(h, p);
+        box.hidden = false;
+        box.scrollIntoView({ behavior: "smooth" });
+    }
+
+    /* ===== Enquiry form ===== */
+    const enquiryForm = document.getElementById("enquiry-form");
+    if (enquiryForm) {
+        const nameEl = document.getElementById("name");
+        const emailEl = document.getElementById("email");
+        const phoneEl = document.getElementById("phone");
+        const typeEl = document.getElementById("type");
+        const dateEl = document.getElementById("start-date");
+        const messageEl = document.getElementById("message");
+        const box = document.getElementById("enquiry-response");
+        dateEl.min = new Date().toLocaleDateString("en-CA");
+
+        const responses = {
+            volunteer: "Volunteering is free. Shifts are available Saturdays 09:00-13:00 and Sundays 10:00-14:00. Our volunteer coordinator will contact you within 3 working days to arrange an orientation.",
+            foster: "Fostering costs you nothing as we cover food and vet bills. We currently have 4 foster spaces available and will arrange a home visit within 5 working days.",
+            sponsor: "Sponsorship starts at R500/month (Bronze: feeds 5 animals), R1,500/month (Silver: vaccinations) or R3,000/month (Gold: sterilisations plus your logo on our website). 3 Gold spots are currently available."
+        };
+
+        const fields = [
+            [nameEl, () => validateText(nameEl, "Name", 2)],
+            [emailEl, () => validateEmail(emailEl)],
+            [phoneEl, () => validatePhone(phoneEl)],
+            [typeEl, () => validateSelect(typeEl, "an enquiry type")],
+            [dateEl, () => validateDate(dateEl)],
+            [messageEl, () => validateText(messageEl, "Message", 10)]
+        ];
+        fields.forEach(([el, check]) => el.addEventListener("blur", check));
+
+        enquiryForm.addEventListener("submit", e => {
+            e.preventDefault();
+            const valid = fields.map(([, check]) => check()).every(Boolean);
+            if (!valid) return;
+
+            const title = "Thank you, " + nameEl.value.trim() + "!";
+            const text = responses[typeEl.value] + " We have noted your preferred start date of " + dateEl.value + ".";
+            const data = Object.fromEntries(new FormData(enquiryForm));
+
+            /* AJAX submit to a free public test API (nothing is stored) */
+            fetch("https://jsonplaceholder.typicode.com/posts", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            })
+                .then(res => { if (!res.ok) throw new Error("Request failed"); return res.json(); })
+                .then(() => { showResponse(box, title, text); enquiryForm.reset(); })
+                .catch(() => showResponse(box, "Something went wrong", "We could not send your enquiry right now. Please try again or contact us directly."));
+        });
+    }
 }

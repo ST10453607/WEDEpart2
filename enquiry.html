@@ -35,42 +35,47 @@
         <p>Your donations go directly toward vetinary care, food, and shelter for animals in need. Online donation processiong will be added in a future phase of this website.</p>
     </section>
 
-
-    <section class="faq">
-        <h2>Frequently Asked Questions</h2>
-        <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">How does adoption work?</button>
-            <div class="accordion-body"><p>Browse our animals, send an enquiry, and we will arrange a meet-and-greet and a home check before the adoption is finalised.</p></div>
-        </div>
-        <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">Do I need experience to volunteer?</button>
-            <div class="accordion-body"><p>No. We train all new volunteers during an orientation session before their first shift.</p></div>
-        </div>
-        <div class="accordion-item">
-            <button class="accordion-header" aria-expanded="false">Are donations tax deductible?</button>
-            <div class="accordion-body"><p>Yes. We are a registered NPO and issue donation receipts on request.</p></div>
-        </div>
-    </section>
-    
     <section class="enquiry-form">
         <h2>Volunteer / Foster Enquiry</h2>
-        <form action="#" method="post">
+        <form id="enquiry-form" action="#" method="post" novalidate>
             <label for="name">Full Name</label>
             <input type="text" id="name" name="name" required>
+            <span class="error" id="name-error"></span>
 
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" required>
+            <span class="error" id="email-error"></span>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 0821234567" required>
+            <span class="error" id="phone-error"></span>
 
             <label for="type">I'm interested in</label>
-            <select id="type" name="type">
+            <select id="type" name="type" required>
+                <option value="">-- Please select --</option>
                 <option value="volunteer">Volunteering</option>
                 <option value="foster">Fostering</option>
                 <option value="sponsor">Sponsorship</option>
             </select>
+            <span class="error" id="type-error"></span>
+
+            <label for="start-date">Preferred Start Date</label>
+            <input type="date" id="start-date" name="start-date" required>
+            <span class="error" id="start-date-error"></span>
+
+            <fieldset>
+                <legend>Which animals would you like to help?</legend>
+                <label><input type="checkbox" name="animals" value="dogs"> Dogs</label>
+                <label><input type="checkbox" name="animals" value="cats"> Cats</label>
+            </fieldset>
 
             <label for="message">Message</label>
             <textarea id="message" name="message" rows="5" required></textarea>
+            <span class="error" id="message-error"></span>
+
+            <button type="submit">Submit Enquiry</button>
         </form>
+        <div id="enquiry-response" class="response-box" aria-live="polite" hidden></div>
     </section>
 </main>
 
