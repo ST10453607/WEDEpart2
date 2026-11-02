@@ -53,18 +53,40 @@
 
     <section class="contact-form">
         <h2>Send us a message</h2>
-        <form action="#" method="post">
-            <label for="cname">Full Name</label>
-            <input type="text" id="cname" name="cname" required>
+        <section class="contact-form">
+            <h2>Send us a message</h2>
+            <form id="contact-form" action="#" method="post" novalidate>
+                <label for="cname">Full Name</label>
+                <input type="text" id="cname" name="cname" required>
+                <span class="error" id="cname-error"></span>
 
-            <label for="cemail">Email Address</label>
-            <input type="email" id="cemail" name="cemail" required>
+                <label for="cemail">Email Address</label>
+                <input type="email" id="cemail" name="cemail" required>
+                <span class="error" id="cemail-error"></span>
 
-            <label for="cmessage">Message</label>
-            <textarea id="cmessage" name="cmessage" rows="5" required></textarea>
+                <label for="cphone">Phone Number</label>
+                <input type="tel" id="cphone" name="cphone" placeholder="e.g. 0821234567" required>
+                <span class="error" id="cphone-error"></span>
 
-            <button type="submit">Send Message</button>
-        </form>
+                <label for="ctopic">Type of Message</label>
+                <select id="ctopic" name="ctopic" required>
+                    <option value="">-- Please select --</option>
+                    <option>General Question</option>
+                    <option>Adoption Enquiry</option>
+                    <option>Donation</option>
+                    <option>Media / Partnership</option>
+                    <option>Feedback or Complaint</option>
+                </select>
+                <span class="error" id="ctopic-error"></span>
+
+                <label for="cmessage">Message</label>
+                <textarea id="cmessage" name="cmessage" rows="5" required></textarea>
+                <span class="error" id="cmessage-error"></span>
+
+                <button type="submit">Prepare Email</button>
+            </form>
+            <div id="contact-response" class="response-box" aria-live="polite" hidden></div>
+        </section>
     </section>
 </main>
 

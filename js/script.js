@@ -192,4 +192,50 @@ if (gallery) {
                 .catch(() => showResponse(box, "Something went wrong", "We could not send your enquiry right now. Please try again or contact us directly."));
         });
     }
+    /* ===== Contact form (compiles an email) ===== */
+    const contactForm = document.getElementById("contact-form");
+    if (contactForm) {
+        const RECIPIENT = "info@pawsandhome.org.za";
+        const nameEl = document.getElementById("cname");
+        const emailEl = document.getElementById("cemail");
+        const phoneEl = document.getElementById("cphone");
+        const topicEl = document.getElementById("ctopic");
+        const messageEl = document.getElementById("cmessage");
+        const box = document.getElementById("contact-response");
+
+        const fields = [
+            [nameEl, () => validateText(nameEl, "Name", 2)],
+            [emailEl, () => validateEmail(emailEl)],
+            [phoneEl, () => validatePhone(phoneEl)],
+            [topicEl, () => validateSelect(topicEl, "a message type")],
+            [messageEl, () => validateText(messageEl, "Message", 10)]
+        ];
+        fields.forEach(([el, check]) => el.addEventListener("blur", check));
+
+        contactForm.addEventListener("submit", e => {
+            e.preventDefault();
+            if (!fields.map(([, check]) => check()).every(Boolean)) return;
+
+            const subject = "[" + topicEl.value + "] Message from " + nameEl.value.trim();
+            const body = "Name: " + nameEl.value.trim() +
+                "\nEmail: " + emailEl.value.trim() +
+                "\nPhone: " + phoneEl.value.trim() +
+                "\nType: " + topicEl.value +
+                "\n\nMessage:\n" + messageEl.value.trim();
+            const link = "mailto:" + RECIPIENT + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+
+            box.innerHTML = "";
+            const h = document.createElement("h3");
+            h.textContent = "Your email is ready!";
+            const p = document.createElement("p");
+            p.textContent = "Click the button to open it in your email app and send it to " + RECIPIENT + ".";
+            const a = document.createElement("a");
+            a.href = link;
+            a.className = "btn";
+            a.textContent = "Send Email";
+            box.append(h, p, a);
+            box.hidden = false;
+            box.scrollIntoView({ behavior: "smooth" });
+        });
+    }
 }
